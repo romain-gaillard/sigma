@@ -1,0 +1,22 @@
+title: Test Standard Rule Custom Repository
+id: 1c06a788-398b-83b4-45a1-ac4c84c72032
+status: test
+description: A test rule for custom repositories
+author: Romain Gaillard
+date: 2024/01/19
+tags:
+    - attack.privilege_escalation
+    - attack.t1548.001
+logsource:
+    product: linux
+    service: auth
+detection:
+    keywords:
+        '|all':
+            - 'pkexec'
+            - 'The value for environment variable XAUTHORITY contains suscipious content'
+            - '[USER=root] [TTY=/dev/pts/0]'
+    condition: keywords
+falsepositives:
+    - Unknown
+level: high
