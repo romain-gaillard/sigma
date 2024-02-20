@@ -1,0 +1,21 @@
+title: Test Rule deleted
+id: dfe8b942-4e53-4242-b679-6b613d521915
+status: test
+description: A test rule stored on a custom git repo
+author: Romain Gaillard
+date: 2024/01/19
+tags:
+    - attack.persistence
+    - attack.privilege_escalation
+    - attack.t1037.005
+logsource:
+    category: file_event
+    product: macos
+detection:
+    selection:
+        - TargetFilename|contains: '/Library/StartupItems/'
+        - TargetFilename|endswith: '.plist'
+    condition: selection
+falsepositives:
+    - Legitimate administration activities
+level: low
